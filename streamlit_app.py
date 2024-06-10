@@ -2,23 +2,35 @@
 
 import streamlit as st
 
-st.title('Streamlit text')
 
-# https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
-st.title('스마일 :sunglasses:')
+# st.title('Streamlit text')
 
-st.header('헤더')
+# # https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
+# st.title('스마일 :sunglasses:')
 
-st.subheader('이것은 subheader 입니다')
+# st.header('헤더')
 
-st.caption('캡션')
+# st.subheader('이것은 subheader 입니다')
 
-code = '''
-def sample_func():
-    print("Sample 함수")
-'''
-st.code(code, language="python")
+# st.caption('캡션')
 
-st.text('')
+# code = '''
+# def sample_func():
+#     print("Sample 함수")
+# '''
+# st.code(code, language="python")
 
-st.markdown('## 마크다운 ## ** 마크다운 **')
+# st.text('')
+
+# st.markdown('## 마크다운 ## ** 마크다운 **')
+
+if "count" not in st.session_state:
+    st.session_state["count"] = 0
+
+st.write(f"카운터 = {st.session_state['count']}")
+
+button = st.button("누르세요")
+
+if button:
+    st.session_state["count"] = st.session_state["count"] + 1
+    st.rerun()
