@@ -3,33 +3,29 @@
 import streamlit as st
 import time
 
+import streamlit as st
+import time
+
 # Initialize session state
-if 'slider_value' not in st.session_state:
-    st.session_state.slider_value = 0
+if 'counter' not in st.session_state:
+    st.session_state.counter = 0
 
-# Placeholder for the slider
-slider_placeholder = st.empty()
+# Placeholder for the counter
+placeholder = st.empty()
 
-# Function to render the slider
-def render_slider():
-    slider_placeholder.slider('Move the slider', 0, 100, st.session_state.slider_value, key='slider')
-
-# Initial render of the slider
-render_slider()
-
-# Function to automate the slider movement
-def move_slider():
-    for i in range(st.session_state.slider_value, 101):
-        st.session_state.slider_value = i
-        render_slider()
+# Function to update the counter
+def update_counter():
+    for i in range(st.session_state.counter, 101):
+        st.session_state.counter = i
+        placeholder.text(f"Counter: {st.session_state.counter}")
         time.sleep(0.1)
-        st.experimental_rerun()  # Re-run the script to update the slider
+        st.experimental_rerun()  # Re-run the script to update the counter
 
-# Check if the slider has reached the end value
-if st.session_state.slider_value < 100:
-    move_slider()
+# Check if the counter has reached the end value
+if st.session_state.counter < 100:
+    update_counter()
 else:
-    st.write("Slider reached the end value!")
+    st.write("Counter reached the end value!")
 
 # st.title('Streamlit text')
 
