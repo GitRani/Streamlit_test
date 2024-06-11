@@ -3,12 +3,10 @@
 import streamlit as st
 import time
 
+
 # Initialize session state
 if 'counter' not in st.session_state:
     st.session_state.counter = 0
-
-# if st.session_state.counter == 100:
-#     st.session_state.counter = 0
 
 # Create a placeholder for the counter
 placeholder = st.empty()
@@ -22,10 +20,7 @@ def update_counter():
 
 # Update the counter and set a delay for auto refresh
 update_counter()
-if st.session_state.counter < 100:
-    st.experimental_rerun()
-else:
-    st.stop()
+st.experimental_rerun() if st.session_state.counter < 100 else st.stop()
 
 
 # st.title('Streamlit text')
