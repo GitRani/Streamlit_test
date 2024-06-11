@@ -3,20 +3,23 @@
 import streamlit as st
 import time
 
-from streamlit_autorefresh import st_autorefresh
-
 # Initialize session state
 if 'counter' not in st.session_state:
     st.session_state.counter = 0
 
-# Increment the counter
-st.session_state.counter += 1
+# Create a placeholder for the counter
+placeholder = st.empty()
 
-# Display the counter
-st.write(f"Counter: {st.session_state.counter}")
+# Function to update the counter
+def update_counter():
+    st.session_state.counter += 1
+    if st.session_state.counter > 100:
+        st.session_state.counter = 0
+    placeholder.text(f"Counter: {st.session_state.counter}")
 
-# Automatically refresh the page every second
-st_autorefresh(interval=1000, key="counter_autorefresh")
+# Update the counter and set a delay for auto refresh
+update_counter()
+st.experimental_rerun() if st.session_state.counter < 100 else st.stop()
 
 
 # st.title('Streamlit text')
