@@ -7,6 +7,9 @@ import time
 if 'counter' not in st.session_state:
     st.session_state.counter = 0
 
+if st.session_state.counter == 100:
+    st.session_state.counter = 0
+
 # Create a placeholder for the counter
 placeholder = st.empty()
 
