@@ -10,17 +10,17 @@ if 'slider_value' not in st.session_state:
 # Create a placeholder for the slider
 slider_placeholder = st.empty()
 
-# Function to render the slider with a unique key
-def render_slider(value, key):
-    return slider_placeholder.slider('Move the slider', 0, 100, value, key=key)
+# Function to render the slider
+def render_slider():
+    slider_placeholder.slider('Move the slider', 0, 100, st.session_state.slider_value, key='slider')
 
 # Initial render of the slider
-current_value = render_slider(st.session_state.slider_value, key='slider')
+render_slider()
 
 # Automate the slider movement
-for i in range(current_value, 101):
+for i in range(st.session_state.slider_value, 101):
     st.session_state.slider_value = i
-    current_value = render_slider(st.session_state.slider_value, key='slider')
+    render_slider()
     time.sleep(0.1)
 
 # st.title('Streamlit text')
