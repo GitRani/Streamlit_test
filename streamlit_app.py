@@ -3,11 +3,15 @@
 import streamlit as st
 import time
 
-progress_bar = st.progress(0)
+# Initialize session state
+if 'slider_value' not in st.session_state:
+    st.session_state.slider_value = 0
 
-for i in range(100):
-    progress_bar.progress(i + 1)
-    time.sleep(0.1)
+# Slider to control the value
+st.session_state.slider_value = st.slider('Move the slider', 0, 100, st.session_state.slider_value)
+
+# Display the slider value
+st.write(f'Slider value is {st.session_state.slider_value}')
 
 # st.title('Streamlit text')
 
