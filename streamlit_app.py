@@ -10,7 +10,7 @@ import time
 if 'counter' not in st.session_state:
     st.session_state.counter = 0
 
-# Placeholder for the counter
+# Create a placeholder
 placeholder = st.empty()
 
 # Function to update the counter
@@ -19,13 +19,15 @@ def update_counter():
         st.session_state.counter = i
         placeholder.text(f"Counter: {st.session_state.counter}")
         time.sleep(0.1)
-        st.experimental_rerun()  # Re-run the script to update the counter
+        if i < 100:
+            st.experimental_rerun()  # Re-run the script to update the counter
 
 # Check if the counter has reached the end value
 if st.session_state.counter < 100:
     update_counter()
 else:
     st.write("Counter reached the end value!")
+
 
 # st.title('Streamlit text')
 
