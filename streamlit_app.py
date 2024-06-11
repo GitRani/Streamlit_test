@@ -7,11 +7,21 @@ import time
 if 'slider_value' not in st.session_state:
     st.session_state.slider_value = 0
 
-# Slider to control the value
-st.session_state.slider_value = st.slider('Move the slider', 0, 100, st.session_state.slider_value)
+# Create a placeholder for the slider
+slider_placeholder = st.empty()
 
-# Display the slider value
-st.write(f'Slider value is {st.session_state.slider_value}')
+# Function to render the slider
+def render_slider(value):
+    return slider_placeholder.slider('Move the slider', 0, 100, value)
+
+# Initial render of the slider
+current_value = render_slider(st.session_state.slider_value)
+
+# Automate the slider movement
+for i in range(current_value, 101):
+    st.session_state.slider_value = i
+    current_value = render_slider(st.session_state.slider_value)
+    time.sleep(0.1)
 
 # st.title('Streamlit text')
 
