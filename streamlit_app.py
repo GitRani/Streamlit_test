@@ -4,23 +4,23 @@ import streamlit as st
 import time
 
 
-# Initialize session state
-if 'counter' not in st.session_state:
-    st.session_state.counter = 0
+# # Initialize session state
+# if 'counter' not in st.session_state:
+#     st.session_state.counter = 0
 
-# Create a placeholder for the counter
-placeholder = st.empty()
+# # Create a placeholder for the counter
+# placeholder = st.empty()
 
-# Function to update the counter
-def update_counter():
-    st.session_state.counter += 1
-    if st.session_state.counter > 100:
-        st.session_state.counter = 0
-    placeholder.text(f"Counter: {st.session_state.counter}")
+# # Function to update the counter
+# def update_counter():
+#     st.session_state.counter += 1
+#     if st.session_state.counter > 100:
+#         st.session_state.counter = 0
+#     placeholder.text(f"Counter: {st.session_state.counter}")
 
-# Update the counter and set a delay for auto refresh
-update_counter()
-st.experimental_rerun() if st.session_state.counter < 100 else st.stop()
+# # Update the counter and set a delay for auto refresh
+# update_counter()
+# st.experimental_rerun() if st.session_state.counter < 100 else st.stop()
 
 
 # st.title('Streamlit text')
