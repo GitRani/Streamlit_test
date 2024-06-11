@@ -3,29 +3,25 @@
 import streamlit as st
 import time
 
-from streamlit.script_runner import RerunException
-
 # Initialize session state
 if 'slider_value' not in st.session_state:
     st.session_state.slider_value = 0
 
-# Function to render the slider
-def render_slider():
-    st.slider('Move the slider', 0, 100, st.session_state.slider_value, key='slider')
-
 # Placeholder for the slider
 slider_placeholder = st.empty()
 
-# Render the slider initially
-with slider_placeholder.container():
-    render_slider()
+# Function to render the slider
+def render_slider():
+    slider_placeholder.slider('Move the slider', 0, 100, st.session_state.slider_value, key='slider')
 
-# Automate the slider movement
+# Initial render of the slider
+render_slider()
+
+# Function to automate the slider movement
 def move_slider():
     for i in range(st.session_state.slider_value, 101):
         st.session_state.slider_value = i
-        with slider_placeholder.container():
-            render_slider()
+        render_slider()
         time.sleep(0.1)
         st.experimental_rerun()  # Re-run the script to update the slider
 
