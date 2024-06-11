@@ -19,7 +19,7 @@ def update_counter():
 
 # Update the counter and set a delay for auto refresh
 update_counter()
-st.experimental_rerun() if st.session_state.counter < 100 else st.stop()
+st.experimental_rerun() if st.session_state.counter < 100 else st.session_state.counter = 0
 
 
 # st.title('Streamlit text')
